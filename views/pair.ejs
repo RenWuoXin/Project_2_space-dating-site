@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>交友配對</title>
+    <!-- <link rel="stylesheet" href="../src/login.css"> -->
+    <link rel="stylesheet" href="../src/pair.css">
+    <link rel="stylesheet" href="../src/hambuger.css">
+    <link rel="stylesheet" href="https://anijs.github.io/lib/anicollection/anicollection.css">
+    <script src="https://kit.fontawesome.com/1b844c32c4.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <style>
+        .star {
+            width: 100%;
+            height: 100%;
+            background-image: url(../img/IMG_6163.PNG);
+            background-position: 0px 0px;
+            background-repeat: repeat-x;
+            animation: RollImg2 linear 60s infinite;
+            position: absolute;
+            z-index: -1;
+        }
+
+        @keyframes RollImg1 {
+            0% {
+                background-position: -6008px 0;
+            }
+
+            100% {
+                background-position: 0 0;
+            }
+        }
+
+        @keyframes RollImg2 {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: -6008px 0;
+            }
+        }
+    </style>
+</head>
+
+<body class="" style="background-image: url(/img/IMG_6162.JPG);">
+    <!--  -->
+    <dialog id="informU">
+        <h3>今日配對次數已用畢</h3>
+        <button id="close">知道了</button>
+    </dialog>
+    <!--  -->
+    <div class="star"></div>
+    <!-- hamburger -->
+    <input type="checkbox" id="active">
+    <label for="active" class="menu-btn"><i class="fa-solid fa-house"></i></label>
+    <div class="wrapper">
+        <div id="animate-area">
+            <div id="star">
+                <button class="logoutBtn" v-on:click="logout">logout</button>
+                <a href="/login">
+                    <img id="login" onmouseover="this.src='/img/IMG_6184.PNG'" onmouseout="this.src='/img/IMG_6183.PNG'"
+                        src="/img/IMG_6183.PNG" alt=" ">
+                </a>
+                <a href="/personalFile">
+                    <img id="members" onmouseover="this.src='/img/IMG_6186.PNG'"
+                        onmouseout="this.src='/img/IMG_6185.PNG'" src="/img/IMG_6185.PNG" alt=" ">
+                </a>
+                <img id="logo" src="/img/IMG_6204.GIF" alt="">
+                <a href="/aboutUs"><img id="aboutUs" onmouseover="this.src='/img/IMG_6178.PNG'"
+                        onmouseout="this.src='/img/IMG_6177.PNG'" src="/img/IMG_6177.PNG" alt=" "></a>
+
+                <img onclick="jump()" id="activity" onmouseover="this.src='/img/IMG_6176.PNG'"
+                    onmouseout="this.src='/img/IMG_6175.PNG'" src="/img/IMG_6175.PNG" alt=" ">
+
+                <img id="match" onmouseover="this.src='img/IMG_6171.PNG'" onmouseout="this.src='img/IMG_6189.PNG'"
+                    src="img/IMG_6189.PNG" alt=" ">
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="pairMachine">
+        <div>
+            <img class="Machine" src="../img/IMG_6210.PNG" alt="">
+        </div>
+        <div>
+            <img class="choose" id="choose" src="../img/choose.PNG" alt="">
+        </div>
+        <div>
+            <img class="filter" src="../img/filter.PNG" alt="" onclick="filter()">
+        </div>
+        <div>
+            <img data-anijs="if: click, do: rubberBand animated, to: #chat" id="chat" class="match"
+                src="../img/like.PNG" alt="" onclick="like()" onmouseover="this.src='./img/heart.png'"
+                onmouseout="this.src='./img/like.PNG'">
+        </div>
+        <div>
+            <img data-anijs="if: click, do: bounceIn animated, to: #btn " id="btn" class="match"
+                src="../img/dislike.PNG" alt="" onclick="dislike()" onmouseover="this.src='./img/broken.png'"
+                onmouseout="this.src='./img/dislike.PNG'">
+        </div>
+
+    </div>
+    <div class="card" id="card">
+        <!-- 用戶圖片 -->
+        <div id="img1" class="imgBx">
+            <img src="<%= data[0].Avatar %>" alt="">
+        </div>
+        <div id="img2" class="imgBx">
+            <img src="<%= data[1].Avatar %>" alt="">
+        </div>
+        <div id="img3" class="imgBx">
+            <img src="<%= data[2].Avatar %>" alt="">
+        </div>
+        <div class=" userDetail">
+            <div class="userName">
+                <!-- 用戶名稱與職業 -->
+                <div class="userName">
+                    <div id="pair1">
+
+                        <h4>
+                            <%- data[0].NickName %><br><span>
+                                    <%- data[0].Job %><br>
+                                        <%- data[0].FavoriteActivity %>
+                                </span>
+                        </h4>
+                    </div>
+                    <div id="pair2">
+                        <h4>
+                            <%- data[1].NickName %><br><span>
+                                    <%- data[1].Job %><br>
+                                        <%- data[1].FavoriteActivity %>
+                                </span>
+                        </h4>
+                    </div>
+                    <div id="pair3">
+                        <h4>
+                            <%- data[2].NickName %><br><span>
+                                    <%- data[2].Job %><br>
+                                        <%- data[2].FavoriteActivity %>
+                                </span>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="filterPart" id="filterPart">
+        <form action="" id="filterForm">
+            <h3>我要找：</h3>
+            <div class="gender">
+                <label for="male">男&nbsp</label>
+                <input type="radio" id="male" name="gender" value="M">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <label for="female">女&nbsp</label>
+                <input type="radio" id="female" name="gender" value="F">
+            </div>
+            <div class="age">
+                <label for="age">年齡:</label>
+                <div class="slider">
+                    <div class="progress"></div>
+                </div>
+                <div class="range-input">
+                    <input type="range" name="minage" class="range-min" min="18" max="100" value="18" step="1">
+                    <input type="range" name="maxage" class="range-max" min="18" max="100" value="75" step="1">
+                </div>
+                <div class="price-input">
+                    <div class="field">
+                        <span>Min</span>
+                        <input type="number" class="input-min" value="18">
+                    </div>
+                    <div class="separator">-</div>
+                    <div class="field">
+                        <span>Max</span>
+                        <input type="number" class="input-max" value="75">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <label for="County">居住地:</label>
+                <select name="County" id="County">
+                    <option value="">請選擇</option>
+                    <option value="KLU">基隆市</option>
+                    <option value="TPH">新北市</option>
+                    <option value="TPE">臺北市</option>
+                    <option value="TYC">桃園市</option>
+                    <option value="HSH">新竹縣</option>
+                    <option value="HSC">新竹市</option>
+                    <option value="MAC">苗栗市</option>
+                    <option value="MAL">苗栗縣</option>
+                    <option value="TXG">臺中市</option>
+                    <option value="CWH">彰化縣</option>
+                    <option value="CWS">彰化市</option>
+                    <option value="NTC">南投市</option>
+                    <option value="NTO">南投縣</option>
+                    <option value="YLH">雲林縣</option>
+                    <option value="CHY">嘉義縣</option>
+                    <option value="CHY">嘉義市</option>
+                    <option value="TNN">臺南市</option>
+                    <option value="KHH">高雄市</option>
+                    <option value="IUH">屏東縣</option>
+                    <option value="PTS">屏東市</option>
+                    <option value="ILN">宜蘭縣</option>
+                    <option value="ILC">宜蘭市</option>
+                    <option value="HWA">花蓮縣</option>
+                    <option value="HWC">花蓮市</option>
+                    <option value="TTC">臺東市</option>
+                    <option value="TTT">臺東縣</option>
+                    <option value="PEH">澎湖縣</option>
+                    <option value="KMN">金門縣</option>
+                    <option value="MZW">馬祖</option>
+                    <option value="LNN">連江縣</option>
+                </select>
+            </div>
+            <!-- <div>
+                <label for="hobby">興趣:</label>
+                <input type="checkbox" name="hobby" id="hobby" value="movie"><span class="text-white">看電影</span>
+                <input type="checkbox" name="hobby" value="music"><span class="text-white">聽音樂</span>
+                <input type="checkbox" name="hobby" value="book"><span class="text-white">看書</span>
+                <input type="checkbox" name="hobby" value="sport"><span class="text-white">運動</span>
+            </div> -->
+            <div class="check">
+                <i class="fa-solid fa-xmark" onclick="xmark()"></i>
+                <i class="fa-solid fa-check" onclick="check()"></i>
+            </div>
+        </form>
+
+    </div>
+    <script src="../src/signin.js"></script>
+    <script src="../src/pair.js"></script>
+    <script src="https://anijs.github.io/lib/anijs/anijs-min.js"></script>
+    <script src="https://anijs.github.io/lib/anijs/helpers/dom/anijs-helper-dom-min.js"></script>
+</body>
+
+</html>

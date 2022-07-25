@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>交友配對</title>
+    <!-- <link rel="stylesheet" href="../src/login.css"> -->
+    <link rel="stylesheet" href="../src/pair.css">
+    <link rel="stylesheet" href="../src/hambuger.css">
+    <script src="https://kit.fontawesome.com/1b844c32c4.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+</head>
+
+
+
+<style>
+    .star {
+        width: 100%;
+        height: 100%;
+        background-image: url(../img/IMG_6163.PNG);
+        background-position: 0px 0px;
+        background-repeat: repeat-x;
+        animation: RollImg2 linear 60s infinite;
+        position: absolute;
+        z-index: -1;
+    }
+
+
+    @keyframes RollImg1 {
+        0% {
+            background-position: -6008px 0;
+        }
+
+        100% {
+            background-position: 0 0;
+        }
+    }
+
+    @keyframes RollImg2 {
+        0% {
+            background-position: 0 0;
+        }
+
+        100% {
+            background-position: -6008px 0;
+        }
+    }
+
+
+    .card2 {
+        position: absolute;
+        top: 22%;
+        left: 28%;
+        width: 30%;
+        height: 50%;
+        /* background: rgba(206, 30, 30, 0.333); */
+        border-radius: 23%;
+        /* box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15); */
+        transition: 0.5s;
+        z-index: 5;
+
+
+
+
+
+    }
+
+
+    .chatbox {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+
+
+        /* border: 5px solid black; */
+        border-radius: 23%;
+
+    }
+
+    #form {
+        /* background: rgba(0, 0, 0, 0.15); */
+        padding: 0.25rem;
+        position: absolute;
+        bottom: 2%;
+        left: 20%;
+        right: 0;
+        display: flex;
+        height: 3rem;
+        box-sizing: border-box;
+        /* backdrop-filter: blur(10px); */
+        border-radius: 25%;
+        width: 60%;
+
+
+
+    }
+
+    #input {
+        border: none;
+        padding: 0 1rem;
+        flex-grow: 1;
+        border-radius: 2rem;
+        margin: 0.25rem;
+    }
+
+    #input:focus {
+        outline: none;
+    }
+
+    #form>button {
+        background: #333;
+        border: none;
+        padding: 0 1rem;
+        margin: 0.25rem;
+        border-radius: 3px;
+        outline: none;
+        color: #fff;
+    }
+
+    #messages {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        left: 10%;
+        top: 15%;
+        position: relative;
+        width: 80%;
+        /* background-color: aqua; */
+
+
+
+    }
+
+    #messages>li {
+        padding: 0.5rem 1rem;
+        background: #ffffff;
+        width: 30%;
+        border-radius: 10px;
+        margin-bottom: 5%;
+        margin-left: 1%;
+        color: black;
+    }
+
+    #messages>li:nth-child(odd) {
+        background: #ffffff;
+        text-align: right;
+        width: 30%;
+        border-radius: 10px;
+        margin-bottom: 5%;
+        margin-left: 62%;
+        color: black;
+
+    }
+</style>
+
+
+<body class="" style="background-image: url(/img/IMG_6162.JPG);">
+    <div  class="star"></div>
+    <!-- hamburger -->
+    <input type="checkbox" id="active">
+    <label for="active" class="menu-btn"><i class="fa-solid fa-house"></i></label>
+    <div class="wrapper">
+        <div id="animate-area">
+            <div id="star">
+                <button class="logoutBtn" v-on:click="logout">logout</button>
+                <a href="/login">
+                    <img id="login" onmouseover="this.src='/img/IMG_6184.PNG'" onmouseout="this.src='/img/IMG_6183.PNG'"
+                        src="/img/IMG_6183.PNG" alt=" ">
+                </a>
+                <a href="/personalFile">
+                    <img id="members" onmouseover="this.src='/img/IMG_6186.PNG'"
+                        onmouseout="this.src='/img/IMG_6185.PNG'" src="/img/IMG_6185.PNG" alt=" ">
+                </a>
+                <img id="logo" src="/img/IMG_6204.GIF" alt="">
+                <a href="/aboutUs"><img id="aboutUs" onmouseover="this.src='/img/IMG_6178.PNG'"
+                        onmouseout="this.src='/img/IMG_6177.PNG'" src="/img/IMG_6177.PNG" alt=" "></a>
+
+                <img onclick="jump()" id="activity" onmouseover="this.src='/img/IMG_6176.PNG'"
+                    onmouseout="this.src='/img/IMG_6175.PNG'" src="/img/IMG_6175.PNG" alt=" ">
+
+                <img id="match" onmouseover="this.src='img/IMG_6171.PNG'" onmouseout="this.src='img/IMG_6189.PNG'"
+                    src="img/IMG_6189.PNG" alt=" ">
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="pairMachine">
+        <div>
+            <img class="Machine" src="../img/IMG_6210.PNG" alt="">
+        </div>
+        <div>
+            <img class="choose" id="choose" src="../img/choose.PNG" alt="">
+        </div>
+        <div>
+            <img class="filter" src="../img/filter.PNG" alt="" onclick="filter()">
+        </div>
+        <div>
+            <img id="chat" class="heart" src="../img/like.PNG" alt="" onclick="like()">
+        </div>
+        <div>
+            <img id="btn" class="heartBroken" src="../img/dislike.PNG" alt="" onclick="dislike()">
+        </div>
+
+    </div>
+    <div class="card2">
+
+        <div class="chatbox">
+
+            <ul id="messages"></ul>
+            <form id="form" action="">
+                <input id="input" autocomplete="off" /><button>送出</button>
+            </form>
+
+
+
+        </div>
+
+    </div>
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+
+        // 當使用者鍵入消息時，伺服器將其作為事件獲取
+        var messages = document.getElementById('messages');
+        var form = document.getElementById('form');
+        var input = document.getElementById('input');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (input.value) {
+                socket.emit('chat message', input.value);
+                input.value = '';
+            }
+        });
+
+        socket.on('chat message', function (msg) {
+            var item = document.createElement('li');
+            item.textContent = msg;
+            messages.appendChild(item);
+            // window.scrollTo(0, document.body.scrollHeight);
+        });
+    </script>
+</body>
+
+</html>

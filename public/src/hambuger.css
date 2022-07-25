@@ -1,0 +1,228 @@
+.wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    /* background: linear-gradient(-135deg, #c850c0, #4158d0); */
+    /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+    /* clip-path: circle(25px at calc(0% + 45px) 45px); */
+    clip-path: circle(25px at calc(100% - 45px) 45px);
+    background-repeat: repeat-x;
+    transition: all 0.3s ease-in-out;
+    z-index: 10;
+}
+
+#active:checked~.wrapper {
+    clip-path: circle(75%);
+}
+
+.menu-btn {
+    position: absolute;
+    z-index: 11;
+    right: 20px;
+    /* left: 20px; */
+    top: 20px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    background-image: url(/img/IMG_6162.JPG);
+    /* background: linear-gradient(-135deg, #c850c0, #4158d0); */
+    background-color: #9146A6;
+    transition: all 0.3s ease-in-out;
+}
+
+#active{
+    visibility:hidden;
+}
+
+#active:checked~.menu-btn {
+    background: #fff;
+    color: #000000;
+}
+
+#active:checked~.menu-btn i:before {
+    content: "\f00d";
+}
+
+.wrapper ul {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    text-align: center;
+}
+
+.wrapper ul li {
+    margin: 15px 0;
+}
+
+.wrapper ul li a {
+    color: none;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: 500;
+    padding: 5px 30px;
+    color: #fff;
+    position: relative;
+    line-height: 50px;
+    transition: all 0.3s ease;
+}
+
+.wrapper ul li a:after {
+    position: absolute;
+    content: "";
+    background: #fff;
+    width: 100%;
+    height: 50px;
+    left: 0;
+    border-radius: 50px;
+    transform: scaleY(0);
+    z-index: -1;
+    transition: transform 0.3s ease;
+}
+
+.wrapper ul li a:hover:after {
+    transform: scaleY(1);
+}
+
+.wrapper ul li a:hover {
+    color: #4158d0;
+}
+
+#active  input[type="checkbox"] {
+    display: none;
+
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    text-align: center;
+    width: 100%;
+    color: #ff0000;
+}
+
+.content .title {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.content p {
+    font-size: 35px;
+    font-weight: 600;
+}
+
+@keyframes animatedBackground {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100% 0;
+    }
+}
+
+#animate-area{
+    width: 100%;
+    height: 100%;
+    background-image:url(/img/IMG_6162.JPG);
+    /* background-color: #00ff99; */
+    background-position: 0px 0px;
+    /* background-repeat: repeat-x; */
+    animation: RollImg1 linear 120s infinite;
+}
+
+#star {
+    width: 100%;
+    height: 100%;
+    
+    background-image:url(/img/IMG_6163.PNG);
+    background-position: 0px 0px;
+    background-repeat: repeat-x;
+    animation: RollImg2 linear 60s infinite;
+}
+
+
+@keyframes RollImg1 {
+    0%{background-position: -6008px 0;}
+    100%{background-position: 0 0;}
+}
+@keyframes RollImg2 {
+    0%{background-position: 0 0;}
+    100%{background-position: -6008px 0;}
+}
+
+
+
+
+#login {
+    width: 16%;
+    height: auto;
+    position: absolute;
+    top: 7%;
+    left: 30%;
+}
+
+#members {
+    width: 16%;
+    height: auto;
+    position: absolute;
+    top: 40%;
+    left: 15%;
+}
+
+#logo {
+    width: 16%;
+    height: auto;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+}
+
+#aboutUs {
+    width: 16%;
+    height: auto;
+    position: absolute;
+    top: 60%;
+    left: 40%;
+}
+
+#activity{
+    width: 16%;
+    height: auto;
+    position: absolute;
+    top: 40%;
+    left: 75%;
+    cursor: pointer;
+    
+}
+
+#match {
+    width: 16%;
+    height: auto;
+    position: absolute;
+    top: 15%;
+    left: 55%;
+}
+
+
+.logoutBtn {
+    background-color: #9146a6;
+    border-radius: 25%;
+    border-style: hidden;
+    color: white;
+    position: absolute;
+    cursor: pointer;
+    bottom: 5px;
+    left: 5px;
+    font-size: 2em;
+  }

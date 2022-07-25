@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url(../img/IMG_6162.JPG);
+            overflow: hidden;
+        }
+
+        #star {
+            background-image: url(../img/IMG_6163.JPG);
+        }
+
+        @keyframes animatedBackground {
+            from {
+                background-position: 0 0;
+            }
+
+            to {
+                background-position: 100% 0;
+            }
+        }
+
+        #animate-area {
+            /* width: 200px;
+            height: 200px; */
+            background-image: url(../img/IMG_6162.JPG);
+            background-position: 0px 0px;
+            background-repeat: repeat-x;
+            animation: animatedBackground 120s linear infinite alternate;
+        }
+
+        #star {
+            width: 1700px;
+            height: 720px;
+            background-image: url(../img/IMG_6163.PNG);
+            background-position: 0px 0px;
+            background-repeat: repeat-x;
+            animation: animatedBackground 100s linear infinite alternate;
+        }
+
+        #login {
+            width: 16%;
+            height: auto;
+            position: absolute;
+            top: 10%;
+            left: 30%;
+        }
+
+        #members {
+            width: 16%;
+            height: auto;
+            position: absolute;
+            top: 45%;
+            left: 15%;
+        }
+
+        #logo {
+            width: 16%;
+            height: auto;
+            position: absolute;
+            top: 2%;
+            left: 2%;
+        }
+
+        #aboutUs {
+            width: 16%;
+            height: auto;
+            position: absolute;
+            top: 65%;
+            left: 40%;
+        }
+
+        #active {
+            width: 16%;
+            height: auto;
+            position: absolute;
+            top: 45%;
+            left: 75%;
+        }
+
+        #match {
+            width: 16%;
+            height: auto;
+            position: absolute;
+            top: 20%;
+            left: 55%;
+        }
+
+
+        .logoutBtn {
+    background-color: #9146a6;
+    border-radius: 25%;
+    border-style: hidden;
+    color: white;
+    position: absolute;
+    cursor: pointer;
+    bottom: 5px;
+    left: 5px;
+    font-size: 2em;
+  }
+    </style>
+</head>
+
+<body id="animate-area">
+    <div id="star">
+        <button class="logoutBtn" v-on:click="logout">logout</button>
+        <a href="Login.html"><img id="login" onmouseover="this.src='../img/IMG_6184.PNG'"
+                onmouseout="this.src='../img/IMG_6183.PNG'" src="../img/IMG_6183.PNG" alt=" "></a>
+        <img id="members" onmouseover="this.src='../img/IMG_6186.PNG'" onmouseout="this.src='../img/IMG_6185.PNG'"
+            src="../img/IMG_6185.PNG" alt=" ">
+        <img id="logo" src="../img/IMG_6204.GIF" alt=" ">
+        <img id="aboutUs" onmouseover="this.src='../img/IMG_6178.PNG'" onmouseout="this.src='../img/IMG_6177.PNG'"
+            src="./img/IMG_6177.PNG" alt=" ">
+        <img id="active" onmouseover="this.src='../img/IMG_6176.PNG'" onmouseout="this.src='../img/IMG_6175.PNG'"
+            src="./img/IMG_6175.PNG" alt=" ">
+        <a href="./pair"><img id="match" onmouseover="this.src='../img/IMG_6171.PNG'"
+                onmouseout="this.src='../img/IMG_6189.PNG'" src="../img/IMG_6189.PNG" alt=" "></a>
+    </div>
+    <!-- <img id="star " src="./img/IMG_6163.PNG " alt=" "> -->
+
+</body>
+
+</html>
